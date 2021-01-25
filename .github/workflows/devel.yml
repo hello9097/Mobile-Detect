@@ -32,8 +32,13 @@ jobs:
           coverage: xdebug
           tools: phpunit:${{ matrix.phpunit-versions }}
 
-      - name: Install
-        run: composer install
+      - name: Setup Composer & Install
+        uses: php-actions/composer@v5
+
+      - name: Versions
+        run: |
+          php -v
+          vendor/bin/phpunit --version
         shell: bash
 
       - name: Run tests
