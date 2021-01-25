@@ -32,12 +32,6 @@ jobs:
           coverage: xdebug
           tools: phpunit:${{ matrix.phpunit-versions }}
 
-      - name: Versions
-        run: |
-          php -v
-          vendor/bin/phpunit --version
-        shell: bash
-
       - name: Install
         run: composer install
         shell: bash
