@@ -36,10 +36,10 @@ jobs:
       - name: Versions
         run: |
           php -v
-          vendor/bin/phpunit --version
+          phpunit --version
           composer -V
         shell: bash
 
       - name: Run tests
-        run: vendor/bin/phpunit -v -c tests/phpunit.xml --coverage-text --strict-coverage --stop-on-risky
+        run: phpunit -v -c tests/phpunit.xml --coverage-text --strict-coverage --stop-on-risky
         shell: bash
