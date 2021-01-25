@@ -15,11 +15,12 @@ jobs:
         operating-system: ['ubuntu-latest']
         php-versions: ['5.3', '7.4']
         phpunit-versions: ['latest']
+        composer-versions: ['latest']
         include:
           - operating-system: 'ubuntu-latest'
             php-versions: '5.3'
             phpunit-versions: '4.8.36'
-            composer-versions: '1.7.2'
+            composer-versions: 'v1'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
