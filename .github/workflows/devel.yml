@@ -13,12 +13,13 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-versions: ['5.3', '5.6', '7.4']
+        php-versions: ['5.3', '7.4']
         phpunit-versions: ['latest']
         include:
           - operating-system: 'ubuntu-latest'
             php-versions: '5.3'
             phpunit-versions: '4.8.36'
+            composer-versions: '1.7.2'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,15 +31,13 @@ jobs:
           extensions: mbstring, intl
           ini-values: post_max_size=256M, max_execution_time=180
           coverage: xdebug
-          tools: phpunit:${{ matrix.phpunit-versions }}
-
-      - name: Setup Composer & Install
-        uses: php-actions/composer@v5
+          tools: phpunit:${{ matrix.phpunit-versions }}, composer:${{ matrix.composer-versions }}
 
       - name: Versions
         run: |
           php -v
           vendor/bin/phpunit --version
+          composer -V
         shell: bash
 
       - name: Run tests
